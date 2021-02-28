@@ -1,0 +1,7 @@
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\bin\Debug\Lab_02.exe.config
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\bin\Debug\Lab_02.exe
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\bin\Debug\Lab_02.pdb
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\obj\Debug\Lab_02.csprojAssemblyReference.cache
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\obj\Debug\Lab_02.csproj.CoreCompileInputs.cache
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\obj\Debug\Lab_02.exe
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_02\Lab_02\obj\Debug\Lab_02.pdb
