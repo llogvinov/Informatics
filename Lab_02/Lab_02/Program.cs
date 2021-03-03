@@ -18,6 +18,8 @@ namespace Lab_02
             float h0 = 1.0f;
             int m = 10;
 
+            Console.WriteLine("Исходная функция: f(x, y) = y * cos(x)\n");
+
             RK_4(x0, y0, h0, m, ref x_All, ref y_RK_4);
             List<double> y_PC = y_RK_4;
             List<double> y_Ad = y_RK_4;
@@ -29,6 +31,7 @@ namespace Lab_02
                 Console.WriteLine("{0,3} | {1}", x_All[i], y_RK_4[i]);
             }
 
+            // Расчет значений у методом прогноза и коррекции
             for (int i = 3; i < Math.Min(x_All.Count(), y_PC.Count()) - 1; i++)
             {
                 Predictor(h0, m, x_All, ref y_PC, i);
@@ -42,6 +45,7 @@ namespace Lab_02
                 Console.WriteLine("{0,3} | {1}", x_All[i], y_PC[i]);
             }
 
+            // Расчет значений у методом Адамса
             for (int i = 3; i < Math.Min(x_All.Count(), y_Ad.Count()) - 1; i++)
             {
                 Adams(h0, m, x_All, ref y_Ad, i);
@@ -94,11 +98,15 @@ namespace Lab_02
         }
 
         // Корректор
+        /* 
+         * В лекции представлена неправильная формула для корректора, при ней результат считается неправильно
+         * Я нашел формулу в интернете, при которой результат считается правильно
+         */
         static void Corrector(float h0, int m, List<double> x_all, ref List<double> y_pc, int i)
         {
             float h = h0 / m;
-            y_pc[i + 1] = y_pc[i] + h / 24 * (9 * F(x_all[i + 1], y_pc[i + 1]) - 19 * F(x_all[i], y_pc[i])
-                -5 * F(x_all[i - 1], y_pc[i - 1]) + F(x_all[i - 2], y_pc[i - 2]));
+            y_pc[i + 1] = y_pc[i] + h / 24 * (F(x_all[i + 1], y_pc[i + 1]) - 5 * F(x_all[i], y_pc[i])
+                +19 * F(x_all[i - 1], y_pc[i - 1]) + 9 * F(x_all[i - 2], y_pc[i - 2]));
         }
 
         // Метод Адамса
@@ -116,6 +124,9 @@ namespace Lab_02
             y_ad[i + 1] = y_ad[i] + h * y_ad[i] + Math.Pow(h, 2) / 2 * d1_f +
                 5 * Math.Pow(h, 3) / 12 * d2_f + 3 * Math.Pow(h, 4) / 8 * d3_f;
         }
+
+        // Метод последовательных приближений
+        static void SequentialApproximation() { }
 
     }
 }
