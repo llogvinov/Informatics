@@ -68,7 +68,8 @@ namespace Lab_02
         }
 
         // Расчет значений у методом Рунге-Кутты, изменяет массив значений х и у
-        static void RK_4(double x, double y, float h0, float m, ref List<double> x_all, ref List<double> y_rk_4)
+        static void RK_4(double x, double y, float h0, float m, 
+            ref List<double> x_all, ref List<double> y_rk_4)
         {
             double k0, k1, k2, k3, dy = 0.0d;
             float h = h0 / m;
@@ -90,7 +91,8 @@ namespace Lab_02
         }
 
         // Предиктор
-        static void Predictor(float h0, int m, List<double> x_all, ref List<double> y_pc, int i)
+        static void Predictor(float h0, int m, 
+            List<double> x_all, ref List<double> y_pc, int i)
         {
             float h = h0 / m;
             y_pc[i + 1] = y_pc[i] + h / 24 * (55 * F(x_all[i], y_pc[i]) - 59 * F(x_all[i - 1], y_pc[i - 1])
@@ -102,7 +104,8 @@ namespace Lab_02
          * В лекции представлена неправильная формула для корректора, при ней результат считается неправильно
          * Я нашел формулу в интернете, при которой результат считается правильно
          */
-        static void Corrector(float h0, int m, List<double> x_all, ref List<double> y_pc, int i)
+        static void Corrector(float h0, int m, 
+            List<double> x_all, ref List<double> y_pc, int i)
         {
             float h = h0 / m;
             y_pc[i + 1] = y_pc[i] + h / 24 * (F(x_all[i + 1], y_pc[i + 1]) - 5 * F(x_all[i], y_pc[i])
@@ -110,7 +113,8 @@ namespace Lab_02
         }
 
         // Метод Адамса
-        static void Adams(float h0, int m, List<double> x_all, ref List<double> y_ad, int i)
+        static void Adams(float h0, int m, 
+            List<double> x_all, ref List<double> y_ad, int i)
         {
             double d1_f, d2_f, d3_f;
             float h = h0 / m;
@@ -125,8 +129,19 @@ namespace Lab_02
                 5 * Math.Pow(h, 3) / 12 * d2_f + 3 * Math.Pow(h, 4) / 8 * d3_f;
         }
 
-        // Метод последовательных приближений
-        static void SequentialApproximation() { }
+        /*
+         * N = max|f'(x, y)| = max|cos(x)| = 1
+         * M = max|f(x, y)| = max|y*cos(x)| = 1.46, на х [0,1]
+         * h = min(a, b/M) = ??? a-?, b-?
+         * 
+         * |y-yn| <= 1.46*(h^(n+1) / Fact(n=1))
+         * 
+         * y1(x) = y0 + y0*sin(x) + C1
+         * y2(x) = y0 + y1*sin(x) + C2
+         * y3(x) = y0 + y2*sin(x) + C3
+         * ....
+         * yn(x) = y0 + y(n-1)*sin(x) + C4
+         */
 
     }
 }
