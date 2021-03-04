@@ -136,11 +136,11 @@ namespace Lab_02
          * 
          * |y-yn| <= 1.46*(h^(n+1) / Fact(n=1))
          * 
-         * y1(x) = y0 + y0*sin(x) + C1
-         * y2(x) = y0 + y1*sin(x) + C2
-         * y3(x) = y0 + y2*sin(x) + C3
+         * y1(x) = y0 + y0*sin(x)
+         * y2(x) = y0 + y1*sin(x)
+         * y3(x) = y0 + y2*sin(x)
          * ....
-         * yn(x) = y0 + y(n-1)*sin(x) + C4
+         * yn(x) = y0 + y(n-1)*sin(x)
          */
 
     }
