@@ -23,6 +23,7 @@ namespace Lab_02
             RK_4(x0, y0, h0, m, ref x_All, ref y_RK_4);
             List<double> y_PC = y_RK_4;
             List<double> y_Ad = y_RK_4;
+            List<double> y_AS;
  
             // Вывод таблицы значений х, у для метода Рунге_Кутты
             Console.WriteLine("Метод Рунге-Кутты 4-го порядка:\n");
@@ -56,6 +57,16 @@ namespace Lab_02
             for (int i = 0; i < Math.Min(x_All.Count(), y_PC.Count()); i++)
             {
                 Console.WriteLine("{0,3} | {1}", x_All[i], y_Ad[i]);
+            }
+
+            Function function = F;
+            y_AS = ApproximationMethod(function, x0, y0, h0, m);
+            
+            // Вывод таблицы значений х, у для метода последовательных приближений
+            Console.WriteLine("\nМетод последовательных приближений:\n");
+            for (int i = 0; i < Math.Min(x_All.Count(), y_AS.Count()); i++)
+            {
+                Console.WriteLine("{0,3} | {1}", x_All[i], y_AS[i]);
             }
 
             Console.Read();
@@ -142,6 +153,43 @@ namespace Lab_02
          * ....
          * yn(x) = y0 + y(n-1)*sin(x)
          */
+
+        public delegate double Function(double x, double y);
+
+        static double Integral(Function f, double x0, 
+            double x, double y, int n)
+        {
+            double sum = 0.0;
+            double h = (x - x0) / n;
+            for (int i = 0; i < n; i++)
+            {
+                sum += h * f(x0 + i * 1.5 * h, y);
+            }
+            return sum;
+        }
+
+        static double Approximation(Function f, double x0, 
+            double x, double y0, double y, int n)
+        {
+            double y1 = y0 + Integral(f, x0, x, y, n);
+            return y0 + Integral(f, x0, x, y1, n);
+        }
+
+        static List<double> ApproximationMethod(Function f, 
+            double x0, double y0, double h0, double m)
+        {
+            List<double> result = new List<double>();
+            List<double> X = new List<double>();
+            double h = h0 / m;
+
+            for (double i = x0; i <= h0 + x0; i += h)
+                X.Add(i);
+            result.Add(y0);
+            for (int i = 1; i < X.Count; i++)
+                result.Add(Approximation(f, x0, X[i], y0, result[i - 1], 100));
+
+            return result;
+        }
 
     }
 }
