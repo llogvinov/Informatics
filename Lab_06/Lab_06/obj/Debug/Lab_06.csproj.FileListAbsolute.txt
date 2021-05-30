@@ -1,0 +1,7 @@
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\bin\Debug\Lab_06.exe.config
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\bin\Debug\Lab_06.exe
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\bin\Debug\Lab_06.pdb
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\obj\Debug\Lab_06.csprojAssemblyReference.cache
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\obj\Debug\Lab_06.csproj.CoreCompileInputs.cache
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\obj\Debug\Lab_06.exe
+C:\Users\llogv\OneDrive\Рабочий стол\прога\Lab_06\Lab_06\obj\Debug\Lab_06.pdb
